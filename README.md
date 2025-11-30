@@ -80,22 +80,42 @@ Contains diagnosis codes (ICD-10):
 
 In Google Colab, load the .ipynb notebook, upload the 3 csv files, install required libraries and dependencies. The following are part of the code that helps analyze the dataset.
 
-1. **Load the three CSV files**
+**Load the three CSV files**
    - Use appropriate variable names for dataframes: `df_header`, `df_line`, `df_code`
 
-2. **Explore each file** 
-   - Shape (number of rows and columns)
-   - First 5 rows
-   - Column names and data types
-   - Explore files with `head`, `iloc` etc. to see structure, columns names, etc.
-   - Missing value counts
-   - Basic descriptive statistics for numeric columns; not useful in most cases.
+**Explore each file** 
 
-3. **Analysis will show**
+   - Shape (number of rows and columns)
+
+         HEADER SHAPE: (388, 43)
+         CODE SHAPE: (1536, 9)
+         LINE SHAPE: (520, 28)
+
+   - First 5 rows (In .ipynb file)
+   - Column names and data types (In .ipynb file)
+   - Explore files with `head`, `iloc` etc. to see structure, columns names, etc. (In .ipynb file)
+   - Missing value counts (In .ipynb file)
+   - Basic descriptive statistics for numeric columns; not useful in most cases. (In .ipynb file)
+
+**Analysis**
+
    - Unique claims in the dataset
+
+         Unique claims in HEADER: 388
+         Unique claims in CODE: 388
+         Unique claims in LINE: 388
+
    - Date range of the claims
-   - Avg number of service lines per claim
-   - Avg number of diagnosis codes per claim
+
+         Service Date Range from: 2023-09-25 to 2024-05-29
+   
+   - Avg number of service lines per claim 
+
+         Average number of service lines per claim: 1.34
+   
+   - Avg number of diagnosis codes per claim 
+   
+         Average diagnosis codes per claim: 3.96
 
 </details>
 
@@ -109,26 +129,35 @@ In Google Colab, load the .ipynb notebook, upload the 3 csv files, install requi
 Uses Pandas operations (merge, groupby, value_counts, etc.):
 
 **1: Provider Analysis**
-- Top 5 billing providers by number of claims
-- Provider name, NPI, and claim count
-- Bar chart visualization of top 5 billing providers
+
+*Results below are copied from the .ipynb file (instead of images)*
+
+- Top 5 billing providers by number of claims (In .ipynb file)
+- Provider name, NPI, and claim count (In .ipynb file)
+- Bar chart visualization of top 5 billing providers (In .ipynb file)
 
 **2: Payer Mix Analysis**
-- Top 5 primary payers by claim volume
-- % of total claims for each payer
-- Bar chart visualization showing payer distribution
+See Section 2 in .ipynb file
+*Results below are copied from the .ipynb file (instead of images)*
 
-**3: Common Diagnoses**
+- Top 5 primary payers by claim volume (In .ipynb file)
+- % of total claims for each payer (In .ipynb file)
+- Bar chart visualization showing payer distribution (In .ipynb file)
+
+**3: Common Diagnoses - ICD**
+See Section 3 in .ipynb file
 - Top 10 most frequently appearing diagnosis codes 
 - ICD-10 code and frequency count
 - Mapped to ICD 10 descriptions
 
-**4: Common Procedures**
+**4: Common Procedures - HCPCS**
+See Section 4 in .ipynb file
 - Top 10 most frequently billed procedure codes (HCPCS)
 - HCPCS code, description and frequency
 - Bar chart visualization showing top 10 procedures
 
 **5: Service Location Analysis**
+See Section 5 in .ipynb file
 - Number of claims submitted for each PlaceOfService
 - % of claims for "INPATIENT" vs "DOCTOR'S OFFICE"?
 
@@ -149,8 +178,7 @@ Uses Pandas operations (merge, groupby, value_counts, etc.):
 
 **7: Diagnosis-Procedure Combinations**
 - Merged dataset linking claims to both procedures and diagnoses
-- Most common diagnosis code (CodeValue) associated with CPT code 99291
-- (Merge the 3 files)
+- Most common diagnosis code (CodeValue) associated with CPT code 99291 (Merge the 3 files)
 
 **8: Charges by Payer**
 - Merge HEADER and LINE files
@@ -170,7 +198,7 @@ Uses Pandas operations (merge, groupby, value_counts, etc.):
 
 <br />
 
-**9: Your Own Analysis**
+**9: Analysis**
 - Total Charges vs Number of Service Lines per Claim by Provider
 - Average Total Charges by Number of Service Lines per Claim and Billing Provider
 - Top 10 Average Total Charges by Num Service Lines and Provider
@@ -184,19 +212,23 @@ Uses Pandas operations (merge, groupby, value_counts, etc.):
 
 ## Summary of key findings
 
-- Billing Provider & Primarypayer with max claims >> "SB INTERNISTS - 152" // "MEDICARE - 242"
-- ICD/HCPCS codes with max claims >> "J96.01 - Acute respiratory failure with hypoxia - 62" // "99291 - CRITICAL CARE, INITIAL FIRST HOUR - 68"
-- Place of Service & Facility location with max claims >> "11 - DOCTOR'S OFFICE - 132" // "231 - INPATIENT - 59.5361"
-- Top provider charges >> "SB INTERNISTS - $87560"
-- Avg charge by place of service >> "22 - Outpatient Hospital - $678.60"
+- Max Claims
 
+   - Billing Provider with max claims `SB INTERNISTS - 152`
 
-## Google Colab
-   - `.ipynb` file has all code for loading and analyzing data
-   - Clear markdown cells explaining each analysis step
-   - `.ipynb` file has all visualizations for key findings
-   - Written interpretations of your results included in the `.ipynb` file
-   - Comments in your code explaining complex operations included in the `.ipynb` file where relevant
+   - Primarypayer with max claims `MEDICARE - 242`
+
+   - ICD codes with max claims `J96.01 - Acute respiratory failure with hypoxia - 62`  
+
+   - HCPCS codes with max claims  `99291 - CRITICAL CARE, INITIAL FIRST HOUR - 68`
+
+   - Place of Service with max claims `11 - DOCTOR'S OFFICE - 132` 
+
+   - Facility location with max claims `231 - INPATIENT - 59.5361`   *Shud have rounded to 59 in the code*
+
+- Top provider charges `SB INTERNISTS - $87560`
+
+- Avg charge by place of service  `22 - Outpatient Hospital - $678.60`  *Shud have rounded to 678 in the code*
 
 ## FYI
 

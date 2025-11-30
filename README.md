@@ -235,3 +235,12 @@ See Section 5 in .ipynb file
 1. **Multiple rows per claim**: LINE and CODE files had multiple rows per ProspectiveClaimId
 2. **Aggregation**: Code does not double-counting (I think!)
 3. **Data types**: Converted date to datetime format (if needed)
+
+
+## Required libraries
+
+* pandas for data loading, cleaning, and relational joins
+* matplotlib for data visualization
+* seaborn for enhanced statistical visualizations
+
+* numpy for numerical operations could have been used too but wasn't

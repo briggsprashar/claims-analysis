@@ -1,9 +1,9 @@
 
-# no file used that requires a .gitignore
+.DS_Store
+
+
+# no other file used that could be added to .gitignore
 # Listed below is the Github autogerenated Python based gitignore
-
-
-
 
 
 # Byte-compiled / optimized / DLL files
